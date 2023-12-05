@@ -1,0 +1,8 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:4200",
+"LaunchCommand": "npm start",
+"WorkingDirectory": "C:\\Users\\navee\\Desktop\\5th Sem\\Excelsoft Internship\\Student Management\\Student_Management\\Student_Management.Server\\..\\student_management.client",
+"MaxTimeoutInSeconds": "120"
+}
+}

@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "JUnsX2EaeOUt5S9Cjn764K6IAixOJUNMod2kWKVv8xi9QracpzZe94iFvQp+xF/me3ofK+BNDJteMThWLWOHqw==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\navee\\Desktop\\5th Sem\\Excelsoft Internship\\Student Management\\Student_Management\\Student_Management.Server\\Student_Management.Server.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\navee\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.14\\microsoft.aspnetcore.openapi.7.0.14.nupkg.sha512",
+    "C:\\Users\\navee\\.nuget\\packages\\microsoft.aspnetcore.spaproxy\\7.0.14\\microsoft.aspnetcore.spaproxy.7.0.14.nupkg.sha512",
+    "C:\\Users\\navee\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "C:\\Users\\navee\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
+    "C:\\Users\\navee\\.nuget\\packages\\swashbuckle.aspnetcore\\6.5.0\\swashbuckle.aspnetcore.6.5.0.nupkg.sha512",
+    "C:\\Users\\navee\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.5.0\\swashbuckle.aspnetcore.swagger.6.5.0.nupkg.sha512",
+    "C:\\Users\\navee\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.5.0\\swashbuckle.aspnetcore.swaggergen.6.5.0.nupkg.sha512",
+    "C:\\Users\\navee\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.5.0\\swashbuckle.aspnetcore.swaggerui.6.5.0.nupkg.sha512"
+  ],
+  "logs": []
+}

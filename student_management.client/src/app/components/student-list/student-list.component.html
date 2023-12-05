@@ -1,0 +1,6 @@
+<!-- student-list.component.html -->
+<div *ngFor="let student of students">
+  <p>{{ student.firstName }} {{ student.lastName }}</p>
+  <button (click)="deleteStudent(student.studentId)">Delete</button>
+  <!-- Add more properties and buttons as needed -->
+</div>

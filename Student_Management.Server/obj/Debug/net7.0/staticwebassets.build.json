@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "hjkG1ZTjFkjuCZQFa2HkaHb9T8aPoA02cdh73PmuycQ=",
+  "Source": "Student_Management.Server",
+  "BasePath": "_content/Student_Management.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\navee\\Desktop\\5th Sem\\Excelsoft Internship\\Student Management\\Student_Management\\student_management.client\\student_management.client.esproj",
+      "Version": 2,
+      "Source": "student_management.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Debug;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
