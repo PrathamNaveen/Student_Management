@@ -6,6 +6,15 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+var allspccor = "corscon";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: allspccor,
+        builder =>
+        {
+            builder.SetIsOriginAllowedToAllowWildcardSubdomains().WithOrigins("http://localhost:4200").AllowAnyHeader().AllowCredentials().AllowAnyMethod();
+        });
+});
 
 var app = builder.Build();
 
@@ -20,7 +29,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors(allspccor);
 app.UseAuthorization();
 
 app.MapControllers();
