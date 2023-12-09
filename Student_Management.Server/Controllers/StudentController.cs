@@ -68,49 +68,4 @@ public class StudentController : ControllerBase
         }
     }
 
-    // DELETE: api/students/1
-    [HttpDelete("{id}")]
-    public IActionResult DeleteStudent(int id)
-    {
-        try
-        {
-            var student = _context.Students.Find(id);
-
-            if (student == null)
-            {
-                return NotFound();
-            }
-
-            _context.Students.Remove(student);
-            _context.SaveChanges();
-
-            return NoContent();
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Internal Server Error: {ex.Message}");
-        }
-    }
-
-    // PUT: api/students/1
-    [HttpPut("{id}")]
-    public IActionResult UpdateStudent(int id, [FromBody] Student updatedStudent)
-    {
-        try
-        {
-            if (id != updatedStudent.StudentId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(updatedStudent).State = EntityState.Modified;
-            _context.SaveChanges();
-
-            return NoContent();
-        }
-        catch (Exception ex)
-        {
-            return StatusCode(500, $"Internal Server Error: {ex.Message}");
-        }
-    }
 }

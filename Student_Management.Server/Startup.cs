@@ -18,8 +18,7 @@ public class Startup
     {
         services.AddDbContext<ApplicationContext>(options =>
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
-        ).AddScoped<ApplicationContext>();
-
+        );
 
         services.AddCors(options =>
         {
@@ -32,8 +31,9 @@ public class Startup
             });
         });
 
-        // Other service configurations...
+        services.AddControllers();
     }
+
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
@@ -42,17 +42,13 @@ public class Startup
             app.UseDeveloperExceptionPage();
         }
 
-        app.UseCors(builder =>
-            builder.WithOrigins("http://localhost:4200")
-                   .AllowAnyMethod()
-                   .AllowAnyHeader()
-                   .AllowCredentials()
-        );
-
         app.UseRouting();
+        app.UseCors();  // Use the configured CORS policy here
+
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
         });
     }
+
 }
