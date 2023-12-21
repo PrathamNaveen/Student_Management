@@ -1,15 +1,16 @@
+// ApplicationContextFactory.cs
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Student_Management.DatabaseContext;
-using System;
+using System.IO;
 
 public class ApplicationContextFactory : IDesignTimeDbContextFactory<ApplicationContext>
 {
     public ApplicationContext CreateDbContext(string[] args)
     {
         IConfigurationRoot configuration = new ConfigurationBuilder()
-            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .SetBasePath(Directory.GetCurrentDirectory())
             .AddJsonFile("appsettings.json")
             .Build();
 

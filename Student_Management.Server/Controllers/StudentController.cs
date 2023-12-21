@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Student_Management.DatabaseContext;
 using System;
+using System.Linq;
 
 [ApiController]
 [Route("api/students")]
@@ -26,6 +27,7 @@ public class StudentController : ControllerBase
         }
         catch (Exception ex)
         {
+            Console.WriteLine(ex.ToString());
             return StatusCode(500, $"Internal Server Error: {ex.Message}");
         }
     }
@@ -47,6 +49,7 @@ public class StudentController : ControllerBase
         }
         catch (Exception ex)
         {
+            Console.WriteLine(ex.ToString());
             return StatusCode(500, $"Internal Server Error: {ex.Message}");
         }
     }
@@ -64,8 +67,8 @@ public class StudentController : ControllerBase
         }
         catch (Exception ex)
         {
+            Console.WriteLine(ex.ToString());
             return StatusCode(500, $"Internal Server Error: {ex.Message}");
         }
     }
-
 }

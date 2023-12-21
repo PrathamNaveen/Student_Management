@@ -5,7 +5,6 @@ namespace Student_Management.DatabaseContext
 {
     public class ApplicationContext : DbContext
     {
-        public ApplicationContext() { }
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
         }
@@ -13,4 +12,3 @@ namespace Student_Management.DatabaseContext
         public DbSet<Student> Students { get; set; }
     }
 }
-

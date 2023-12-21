@@ -20,6 +20,8 @@ public class Startup
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
         );
 
+        services.AddScoped<ApplicationContext>();
+
         services.AddCors(options =>
         {
             options.AddDefaultPolicy(builder =>
