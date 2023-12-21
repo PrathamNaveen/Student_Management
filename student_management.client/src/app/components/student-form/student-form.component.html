@@ -1,10 +1,35 @@
+<div class="form-container">
+  <form>
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" [(ngModel)]="student.firstName" name="firstName" placeholder="Enter your first name" required />
 
-<form>
-  <label for="firstName">First Name:</label>
-  <input type="text" id="firstName" [(ngModel)]="student.firstName" name="firstName" />
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" [(ngModel)]="student.lastName" name="lastName" placeholder="Enter your last name" required />
 
-  <label for="lastName">Last Name:</label>
-  <input type="text" id="lastName" [(ngModel)]="student.lastName" name="lastName" />
+    <label for="dateOfBirth">Date of Birth:</label>
+    <input type="date" id="dateOfBirth" [(ngModel)]="student.dateOfBirth" name="dateOfBirth" />
 
-  <button (click)="saveStudent()">Save</button>
-</form>
+    <label>Gender:</label>
+    <div class="gender-radio">
+      <label>
+        <input type="radio" [(ngModel)]="student.gender" name="gender" value="male" />
+        Male
+      </label>
+      <label>
+        <input type="radio" [(ngModel)]="student.gender" name="gender" value="female" />
+        Female
+      </label>
+    </div>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" [(ngModel)]="student.email" name="email" placeholder="Enter your email" />
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" [(ngModel)]="student.phoneNumber" name="phoneNumber" placeholder="Enter your phone number" />
+
+    <label for="courseId">Course ID:</label>
+    <input type="number" id="courseId" [(ngModel)]="student.courseId" name="courseId" />
+
+    <button (click)="saveStudent()">Save</button>
+  </form>
+</div>

@@ -1,9 +1,15 @@
 <!-- student-detail.component.html -->
-<div *ngIf="student">
-  <p>{{ student.firstName }} {{ student.lastName }}</p>
-  <p>Date of Birth: {{ student.dateOfBirth | date }}</p>
-  <p>Gender: {{ student.gender }}</p>
-  <p>Email: {{ student.email }}</p>
-  <p>Phone Number: {{ student.phoneNumber }}</p>
-  <!-- Add more properties as needed -->
+
+<div class="detail-container">
+  <div *ngIf="student" class="student-details">
+    <p>Student ID: {{ student.studentId }}</p>
+    <hr/>
+    <p>First Name: {{ student.firstName }}</p>
+    <p>Last Name: {{ student.lastName }}</p>
+    <p>Date of Birth: {{ student.dateOfBirth | date }}</p>
+    <p>Gender: {{ student.gender }}</p>
+    <p>Email: {{ student.email || 'Not provided' }}</p>
+    <p>Phone Number: {{ student.phoneNumber || 'Not provided' }}</p>
+    <p>Course ID: {{ student.courseId || 'Not provided' }}</p>
+  </div>
 </div>

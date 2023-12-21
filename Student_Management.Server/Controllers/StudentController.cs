@@ -74,36 +74,35 @@ public class StudentController : ControllerBase
         }
     }
 
-    // PATCH: api/students/1
-    //[HttpPatch("{id}")]
-    //public IActionResult UpdateStudent(int id, [FromBody] JsonPatchDocument<Student> patchDocument)
-    //{
-    //    try
-    //    {
-    //        var student = _context.Students.Find(id);
+    [HttpPatch("{id}")]
+    public IActionResult UpdateStudent(int id, [FromBody] JsonPatchDocument<Student> patchDocument)
+    {
+        try
+        {
+            var student = _context.Students.Find(id);
 
-    //        if (student == null)
-    //        {
-    //            return NotFound();
-    //        }
+            if (student == null)
+            {
+                return NotFound();
+            }
 
-    //        patchDocument.ApplyTo(student, ModelState);
+            patchDocument.ApplyTo(student, (Microsoft.AspNetCore.JsonPatch.Adapters.IObjectAdapter)ModelState);
 
-    //        if (!ModelState.IsValid)
-    //        {
-    //            return BadRequest(ModelState);
-    //        }
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-    //        _context.SaveChanges();
+            _context.SaveChanges();
 
-    //        return Ok(student);
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        Console.WriteLine(ex.ToString());
-    //        return StatusCode(500, $"Internal Server Error: {ex.Message}");
-    //    }
-    //}
+            return Ok(student);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+            return StatusCode(500, $"Internal Server Error: {ex.Message}");
+        }
+    }
 
     // DELETE: api/students/1
     [HttpDelete("{id}")]

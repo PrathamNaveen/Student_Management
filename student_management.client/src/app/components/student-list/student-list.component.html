@@ -1,6 +1,9 @@
 <!-- student-list.component.html -->
-<div *ngFor="let student of students">
-  <p>{{ student.firstName }} {{ student.lastName }}</p>
-  <button (click)="deleteStudent(student.studentId)">Delete</button>
-  <!-- Add more properties and buttons as needed -->
+
+<div class="list-container">
+  <div *ngFor="let student of students" class="student-card" (mouseenter)="togglePointer(true)" (mouseleave)="togglePointer(false)">
+    <p [class.pointer]="isHovered">{{ student.firstName }} {{ student.lastName }}</p>
+    <button (click)="deleteStudent(student.studentId)" class="delete-button">Delete</button>
+    <button (click)="showStudentDetails(student.studentId, student.firstName + ' ' + student.lastName)" class="edit-button">Edit / View</button>
+  </div>
 </div>
