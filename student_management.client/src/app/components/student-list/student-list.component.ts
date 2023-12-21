@@ -24,8 +24,14 @@ export class StudentListComponent implements OnInit {
   }
 
   deleteStudent(id: number): void {
-    this.studentService.deleteStudent(id).subscribe(() => {
-      this.loadStudents();
-    });
+    this.studentService.deleteStudent(id).subscribe(
+      () => {
+        console.log(`Student with ID ${id} deleted successfully.`);
+        this.loadStudents(); // Reload the list after deletion
+      },
+      (error) => {
+        console.error(`Error deleting student with ID ${id}: ${error}`);
+      }
+    );
   }
 }
