@@ -7,5 +7,5 @@ public class Course
     public string CourseDescription { get; set; }
 
     // Navigation property
-    public List<Student> Students { get; set; }
+    //public List<Student>? Student { get; set; }
 }

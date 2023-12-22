@@ -1,18 +1,34 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Student_Management.DatabaseContext;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 [ApiController]
 [Route("api/courses")]
 public class CourseController : ControllerBase
 {
-    private static List<Course> _courses = new List<Course>
+    private readonly ApplicationContext _context;
+
+    public CourseController(ApplicationContext context)
     {
-        new Course { CourseId = 1, CourseName = "Computer Science", CourseCode = "CS101", CourseDescription = "Introduction to Computer Science" },
-        new Course { CourseId = 2, CourseName = "Mathematics", CourseCode = "MA101", CourseDescription = "Introduction to Mathematics" }
-    };
+        _context = context;
+    }
 
     [HttpGet]
     public IActionResult GetCourses()
     {
-        return Ok(_courses);
+        try
+        {
+            var courses = _context.Courses.ToList();
+            return Ok(courses);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.ToString());
+            return StatusCode(500, $"Internal Server Error: {ex.Message}");
+        }
     }
 }

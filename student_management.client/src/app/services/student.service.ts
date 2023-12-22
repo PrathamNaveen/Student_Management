@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Student } from '../models/student.model';
+import { Course } from '../models/course.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class StudentService {
   private apiUrl = 'https://localhost:7067/api/students';
+  private coursesUrl = 'https://localhost:7067/api/courses'; // Add the courses endpoint
 
   constructor(private http: HttpClient) { }
 
@@ -30,5 +32,9 @@ export class StudentService {
 
   deleteStudent(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
+
+  getCourses(): Observable<Course[]> {
+    return this.http.get<Course[]>(this.coursesUrl);
   }
 }

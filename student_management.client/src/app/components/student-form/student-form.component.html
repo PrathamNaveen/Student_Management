@@ -1,3 +1,4 @@
+<!-- student-form.component.html -->
 <div class="form-container">
   <form>
     <label for="firstName">First Name:</label>
@@ -27,9 +28,15 @@
     <label for="phoneNumber">Phone Number:</label>
     <input type="tel" id="phoneNumber" [(ngModel)]="student.phoneNumber" name="phoneNumber" placeholder="Enter your phone number" />
 
-    <label for="courseId">Course ID:</label>
-    <input type="number" id="courseId" [(ngModel)]="student.courseId" name="courseId" />
+    <!-- Course field -->
+    <label for="courseId">Course:</label>
+    <select id="courseId" [(ngModel)]="student.courseId" name="courseId">
+      <option *ngFor="let course of courses" [value]="course.courseId">
+        {{ course.courseId }} - {{ course.courseName }}
+      </option>
+    </select>
 
-    <button (click)="saveStudent()">Save</button>
+
+    <button type="button" (click)="saveStudent()">Save</button>
   </form>
 </div>

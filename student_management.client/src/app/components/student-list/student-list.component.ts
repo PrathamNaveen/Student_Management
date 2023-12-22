@@ -22,8 +22,15 @@ export class StudentListComponent implements OnInit {
 
   loadStudents(): void {
     this.studentService.getStudents().subscribe(
-      (data) => {
-        this.students = data;
+      (data: any) => {
+        console.log('Received data from API:', data);
+
+        // Check if data has $values property and it is an array before assigning
+        if (data.$values && Array.isArray(data.$values)) {
+          this.students = data.$values;
+        } else {
+          console.error('Invalid data format:', data);
+        }
       },
       (error) => {
         console.error('Error loading students:', error);
@@ -31,6 +38,7 @@ export class StudentListComponent implements OnInit {
       }
     );
   }
+
 
   deleteStudent(id: number): void {
     this.studentService.deleteStudent(id).subscribe(

@@ -11,5 +11,5 @@ public class Student
     public int CourseId { get; set; } // Foreign key
 
     // Navigation property
-    // public Course Course { get; set; }
+    //public Course? Course { get; set; }
 }

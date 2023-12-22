@@ -11,6 +11,8 @@ import { Student } from '../../models/student.model';
 })
 export class StudentDetailComponent implements OnInit {
   student: Student | undefined;
+  editMode = false;
+  editedStudent: Partial<Student> = {}; // Use Partial<Student> to allow partial updates
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +27,37 @@ export class StudentDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.studentService.getStudentById(id).subscribe((data) => {
       this.student = data;
+      this.editedStudent = { ...data } as Partial<Student>; // Ensure correct type
     });
+  }
+
+  toggleEdit(attribute: keyof Student): void {
+    this.editMode = true;
+  }
+
+  saveChanges(attribute: keyof Student): void {
+    if (!this.student) {
+      return; // Handle the case where this.student is undefined
+    }
+
+    // Update only the specified property
+    switch (attribute) {
+      case 'firstName':
+      case 'lastName':
+      case 'gender':
+      case 'email':
+      case 'phoneNumber':
+        this.student[attribute] = this.editedStudent[attribute] as string;
+        break;
+      // Add cases for other attributes as needed
+    }
+
+    // Call the service to update the student in the database
+    this.studentService
+      .updateStudent(this.student.studentId, this.student)
+      .subscribe(() => {
+        // After a successful update, exit edit mode
+        this.editMode = false;
+      });
   }
 }

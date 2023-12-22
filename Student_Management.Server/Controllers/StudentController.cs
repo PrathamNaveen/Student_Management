@@ -74,28 +74,35 @@ public class StudentController : ControllerBase
         }
     }
 
-    [HttpPatch("{id}")]
-    public IActionResult UpdateStudent(int id, [FromBody] JsonPatchDocument<Student> patchDocument)
+    [HttpPut("{id}")]
+    public IActionResult UpdateStudent(int id, [FromBody] Student updatedStudent)
     {
         try
         {
-            var student = _context.Students.Find(id);
+            var existingStudent = _context.Students.Find(id);
 
-            if (student == null)
+            if (existingStudent == null)
             {
                 return NotFound();
             }
 
-            patchDocument.ApplyTo(student, (Microsoft.AspNetCore.JsonPatch.Adapters.IObjectAdapter)ModelState);
+            // Update only the specified properties
+            existingStudent.FirstName = updatedStudent.FirstName;
+            // Repeat the same for other properties you want to update
 
+            // Validate the model
+            TryValidateModel(existingStudent);
+
+            // Check if the model is valid
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            // Save changes to the database
             _context.SaveChanges();
 
-            return Ok(student);
+            return Ok(existingStudent);
         }
         catch (Exception ex)
         {
@@ -103,6 +110,8 @@ public class StudentController : ControllerBase
             return StatusCode(500, $"Internal Server Error: {ex.Message}");
         }
     }
+
+
 
     // DELETE: api/students/1
     [HttpDelete("{id}")]

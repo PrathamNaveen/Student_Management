@@ -10,5 +10,6 @@ namespace Student_Management.DatabaseContext
         }
 
         public DbSet<Student> Students { get; set; }
+        public DbSet<Course> Courses { get; set; }
     }
 }

@@ -4,7 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 60vh;
+  margin-top: 10vh;
 }
 
 form {
@@ -40,9 +41,9 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #0056b3;
-}
+  button:hover {
+    background-color: #0056b3;
+  }
 
 .gender-radio {
   display: flex;

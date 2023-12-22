@@ -2,14 +2,65 @@
 
 <div class="detail-container">
   <div *ngIf="student" class="student-details">
-    <p>Student ID: {{ student.studentId }}</p>
-    <hr/>
-    <p>First Name: {{ student.firstName }}</p>
-    <p>Last Name: {{ student.lastName }}</p>
-    <p>Date of Birth: {{ student.dateOfBirth | date }}</p>
-    <p>Gender: {{ student.gender }}</p>
-    <p>Email: {{ student.email || 'Not provided' }}</p>
-    <p>Phone Number: {{ student.phoneNumber || 'Not provided' }}</p>
-    <p>Course ID: {{ student.courseId || 'Not provided' }}</p>
+    <p>
+      <span>Student ID: {{ student.studentId }}</span>
+    </p>
+    <hr />
+    <p>
+      <span *ngIf="!editMode">First Name: {{ student.firstName }}</span>
+      <span *ngIf="editMode">
+        First Name:
+        <input type="text" [(ngModel)]="editedStudent.firstName" />
+      </span>
+      <button *ngIf="!editMode" (click)="toggleEdit('firstName')">Edit</button>
+      <button *ngIf="editMode" (click)="saveChanges('firstName')">Save</button>
+    </p>
+
+    <p>
+      <span *ngIf="!editMode">Last Name: {{ student.lastName }}</span>
+      <span *ngIf="editMode">
+        Last Name:
+        <input type="text" [(ngModel)]="editedStudent.lastName" />
+      </span>
+      <button *ngIf="!editMode" (click)="toggleEdit('lastName')">Edit</button>
+      <button *ngIf="editMode" (click)="saveChanges('lastName')">Save</button>
+    </p>
+
+    <p>
+      <span *ngIf="!editMode">Date of Birth: {{ student.dateOfBirth | date }}</span>
+      <span *ngIf="editMode">
+        Date of Birth: {{ editedStudent.dateOfBirth | date }}
+      </span>
+    </p>
+
+    <p>
+      <span *ngIf="!editMode">Gender: {{ student.gender }}</span>
+      <span *ngIf="editMode">
+        Gender:
+        <input type="text" [(ngModel)]="editedStudent.gender" />
+      </span>
+      <button *ngIf="!editMode" (click)="toggleEdit('gender')">Edit</button>
+      <button *ngIf="editMode" (click)="saveChanges('gender')">Save</button>
+    </p>
+
+    <p>
+      <span *ngIf="!editMode">Email: {{ student.email || 'Not provided' }}</span>
+      <span *ngIf="editMode">
+        Email:
+        <input type="email" [(ngModel)]="editedStudent.email" />
+      </span>
+      <button *ngIf="!editMode" (click)="toggleEdit('email')">Edit</button>
+      <button *ngIf="editMode" (click)="saveChanges('email')">Save</button>
+    </p>
+
+    <p>
+      <span *ngIf="!editMode">Phone Number: {{ student.phoneNumber || 'Not provided' }}</span>
+      <span *ngIf="editMode">
+        Phone Number:
+        <input type="tel" [(ngModel)]="editedStudent.phoneNumber" />
+      </span>
+      <button *ngIf="!editMode" (click)="toggleEdit('phoneNumber')">Edit</button>
+      <button *ngIf="editMode" (click)="saveChanges('phoneNumber')">Save</button>
+    </p>
   </div>
 </div>

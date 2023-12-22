@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Student_Management.DatabaseContext;
+using System.Text.Json.Serialization;
 
 public class Startup
 {
@@ -33,7 +34,10 @@ public class Startup
             });
         });
 
-        services.AddControllers();
+        services.AddControllers().AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+        });
     }
 
 
