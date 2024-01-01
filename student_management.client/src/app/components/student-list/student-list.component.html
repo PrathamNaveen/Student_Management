@@ -1,9 +1,82 @@
 <!-- student-list.component.html -->
 
-<div class="list-container">
-  <div *ngFor="let student of students" class="student-card" (mouseenter)="togglePointer(true)" (mouseleave)="togglePointer(false)">
-    <p [class.pointer]="isHovered">{{ student.firstName }} {{ student.lastName }}</p>
-    <button (click)="deleteStudent(student.studentId)" class="delete-button">Delete</button>
-    <button (click)="showStudentDetails(student.studentId, student.firstName + ' ' + student.lastName)" class="edit-button">Edit / View</button>
-  </div>
+<div class="list-container">  
+  <button class="add-button" (click)="addNewStudent()">Add New Student</button>
+  <table id="tab1" class="center-table">
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Course ID</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.studentId }}</td>
+        <td>{{ student.firstName }}</td>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.dateOfBirth | date:'short' }}</td>
+        <td>{{ student.gender }}</td>
+        <td>{{ student.email }}</td>
+        <td>{{ student.phoneNumber }}</td>
+        <td>{{ student.courseId }}</td>
+        <td>
+          <button (click)="deleteStudent(student.studentId)" class="delete-button">Delete</button>
+          <button (click)="showStudentDetails(student.studentId, student.firstName + ' ' + student.lastName)" class="edit-button">Edit / View</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
+<style>
+  #tab1 {
+    margin: auto;
+    width: 90%;
+  }
+
+  .center-table table,
+  .center-table th,
+  .center-table td {
+    border: 1px solid #e3e3e3;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .center-table tbody > tr:hover > td {
+    background: #f4f4f4;
+  }
+
+  .center-table thead > tr > th {
+    background: #f4f4f4;
+    border-bottom: 1px solid #e3e3e3 !important;
+  }
+
+  .center-table tbody > tr:nth-child(even) {
+    background: #fbfbfb;
+  }
+
+  .add-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+    .add-button:hover {
+      background-color: #0056b3;
+    }
+
+</style>

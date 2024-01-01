@@ -68,6 +68,10 @@ export class StudentListComponent implements OnInit {
     );
   }
 
+  addNewStudent(): void {
+    this.router.navigate(['/add-student']);
+  } 
+
   editStudent(id: number): void {
     // Make your API call to edit student details here
     this.router.navigate(['/edit-student', id]);

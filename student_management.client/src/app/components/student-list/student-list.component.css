@@ -1,5 +1,14 @@
 /* student-list.component.css */
 
+.list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 30vh;
+  position: relative;
+}
+
 .student-card {
   background-color: #f5f5f5;
   border: 1px solid #ddd;
@@ -30,7 +39,7 @@
   background-color: #dc3545;
   color: white;
   border: none;
-  padding: 8px 12px;
+ 
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -38,15 +47,15 @@
 
 .delete-button,
 .edit-button {
-  padding: 8px 12px;
-  margin-right: 10px; /* Adjust spacing between buttons */
+  
+  margin-right: 10px; 
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s; /* Add transition for smooth color change */
+  transition: background-color 0.3s;=
 }
 
 .edit-button {
-  background-color: #28a745; /* Green color */
+  background-color: #28a745;
   color: white;
   border: none;
 }
@@ -56,5 +65,6 @@
 }
 
 .edit-button:hover {
-  background-color: #218838; /* Darker green on hover */
+  background-color: #218838; 
 }
+

@@ -86,9 +86,8 @@ public class StudentController : ControllerBase
                 return NotFound();
             }
 
-            // Update only the specified properties
-            existingStudent.FirstName = updatedStudent.FirstName;
-            // Repeat the same for other properties you want to update
+            // Update the existing student entity with values from the updatedStudent
+            _context.Entry(existingStudent).CurrentValues.SetValues(updatedStudent);
 
             // Validate the model
             TryValidateModel(existingStudent);
@@ -110,6 +109,7 @@ public class StudentController : ControllerBase
             return StatusCode(500, $"Internal Server Error: {ex.Message}");
         }
     }
+
 
 
 

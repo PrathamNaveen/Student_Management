@@ -25,8 +25,8 @@ export class StudentFormComponent implements OnInit {
     phoneNumber: '',
     courseId: 0,
   };
-
-  courses: Course[] = [];
+  courses!: any[];
+  //courses: Course[] = [];
 
   constructor(
     private router: Router,
@@ -37,12 +37,14 @@ export class StudentFormComponent implements OnInit {
   ngOnInit(): void {
     this.loadCourses();
   }
-
+ 
   loadCourses(): void {
     this.courseService.getCourses().subscribe(
-      (data: Course[]) => {
+      (data :any)=> {
         console.log('Courses:', data);
-        this.courses = data;
+        this.courses = data.$values;
+        //this.courses = data;
+        console.log('Courses:', this.courses);
       },
       (error) => {
         console.error('Error fetching courses:', error);
