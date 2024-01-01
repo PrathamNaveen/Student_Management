@@ -1,13 +1,11 @@
-// student-form.component.ts
-
+// Import necessary modules
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { StudentService } from '../../services/student.service';
 import { CourseService } from '../../services/course.service';
 import { Student } from '../../models/student.model';
 import { Course } from '../../models/course.model';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-student-form',
@@ -26,42 +24,73 @@ export class StudentFormComponent implements OnInit {
     courseId: 0,
   };
   courses!: any[];
-  //courses: Course[] = [];
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute, 
     private studentService: StudentService,
     private courseService: CourseService
   ) { }
 
   ngOnInit(): void {
     this.loadCourses();
+
+    this.route.params.subscribe((params) => {
+      const studentId = params['id'];
+      if (studentId) {
+        this.loadStudentDetails(studentId);
+      }
+    });
   }
- 
+
+  loadStudentDetails(studentId: number): void {
+    this.studentService.getStudentById(studentId).subscribe(
+      (data: any) => {
+        this.student = data;
+      },
+      (error) => {
+        console.error('Error fetching student details:', error);
+      }
+    );
+  }
+
   loadCourses(): void {
     this.courseService.getCourses().subscribe(
-      (data :any)=> {
-        console.log('Courses:', data);
+      (data: any) => {
         this.courses = data.$values;
-        //this.courses = data;
-        console.log('Courses:', this.courses);
       },
       (error) => {
         console.error('Error fetching courses:', error);
-        // You can choose to handle the error or simply log it
       }
     );
   }
 
   saveStudent(): void {
-    this.studentService.createStudent(this.student).subscribe(
-      () => {
-        this.router.navigate(['/students']);
-      },
-      (error) => {
-        console.error('Error saving student:', error);
-        // Handle error as needed, e.g., show a user-friendly message
-      }
-    );
+    // Edit
+    if (this.student.studentId) {
+      this.studentService.updateStudent(this.student.studentId, this.student).subscribe(
+        () => {
+          this.router.navigate(['/students']);
+        },
+        (error) => {
+          console.error('Error updating student:', error);
+        }
+      );
+    }
+    // Add
+    else {
+      this.studentService.createStudent(this.student).subscribe(
+        () => {
+          this.router.navigate(['/students']);
+        },
+        (error) => {
+          console.error('Error saving student:', error);
+        }
+      );
+    }
+  }
+
+  cancel(): void {
+    this.router.navigate(['/students']);
   }
 }

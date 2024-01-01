@@ -1,6 +1,6 @@
 <!-- student-list.component.html -->
 
-<div class="list-container">  
+<div class="list-container">
   <button class="add-button" (click)="addNewStudent()">Add New Student</button>
   <table id="tab1" class="center-table">
     <thead>
@@ -28,7 +28,7 @@
         <td>{{ student.courseId }}</td>
         <td>
           <button (click)="deleteStudent(student.studentId)" class="delete-button">Delete</button>
-          <button (click)="showStudentDetails(student.studentId, student.firstName + ' ' + student.lastName)" class="edit-button">Edit / View</button>
+          <button (click)="showStudentDetails(student)" class="edit-button">Edit</button>
         </td>
       </tr>
     </tbody>
@@ -64,8 +64,8 @@
 
   .add-button {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 35px;
+    right: 100px;
     padding: 10px;
     background-color: #007bff;
     color: white;
@@ -78,5 +78,4 @@
     .add-button:hover {
       background-color: #0056b3;
     }
-
 </style>

@@ -4419,19 +4419,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\prath\\.nuget\\packages\\": {}
+    "C:\\Users\\navee\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\prath\\source\\repos\\Latest_Latest_Student_Management\\Student_Management.Server\\Student_Management.Server.csproj",
+      "projectUniqueName": "C:\\Users\\navee\\source\\repos\\Student_Management_Latest\\Student_Management.Server\\Student_Management.Server.csproj",
       "projectName": "Student_Management.Server",
-      "projectPath": "C:\\Users\\prath\\source\\repos\\Latest_Latest_Student_Management\\Student_Management.Server\\Student_Management.Server.csproj",
-      "packagesPath": "C:\\Users\\prath\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\prath\\source\\repos\\Latest_Latest_Student_Management\\Student_Management.Server\\obj\\",
+      "projectPath": "C:\\Users\\navee\\source\\repos\\Student_Management_Latest\\Student_Management.Server\\Student_Management.Server.csproj",
+      "packagesPath": "C:\\Users\\navee\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\navee\\source\\repos\\Student_Management_Latest\\Student_Management.Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\prath\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\navee\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

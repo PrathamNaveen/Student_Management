@@ -10,7 +10,7 @@ import { Course } from '../models/course.model';
 })
 export class StudentService {
   private apiUrl = 'https://localhost:7067/api/students';
-  private coursesUrl = 'https://localhost:7067/api/courses'; // Add the courses endpoint
+  private coursesUrl = 'https://localhost:7067/api/courses';
 
   constructor(private http: HttpClient) { }
 

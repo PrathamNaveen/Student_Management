@@ -12,7 +12,7 @@ import { Student } from '../../models/student.model';
 export class StudentDetailComponent implements OnInit {
   student: Student | undefined;
   editMode = false;
-  editedStudent: Partial<Student> = {}; // Use Partial<Student> to allow partial updates
+  editedStudent: Partial<Student> = {}; 
 
   constructor(
     private route: ActivatedRoute,
@@ -27,7 +27,7 @@ export class StudentDetailComponent implements OnInit {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.studentService.getStudentById(id).subscribe((data) => {
       this.student = data;
-      this.editedStudent = { ...data } as Partial<Student>; // Ensure correct type
+      this.editedStudent = { ...data } as Partial<Student>; 
     });
   }
 

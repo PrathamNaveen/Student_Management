@@ -25,7 +25,6 @@ export class StudentListComponent implements OnInit {
       (data: any) => {
         console.log('Received data from API:', data);
 
-        // Check if data has $values property and it is an array before assigning
         if (data.$values && Array.isArray(data.$values)) {
           this.students = data.$values;
         } else {
@@ -34,47 +33,28 @@ export class StudentListComponent implements OnInit {
       },
       (error) => {
         console.error('Error loading students:', error);
-        // Handle error as needed, e.g., show a user-friendly message
       }
     );
   }
-
 
   deleteStudent(id: number): void {
     this.studentService.deleteStudent(id).subscribe(
       () => {
         console.log(`Student with ID ${id} deleted successfully.`);
-        this.loadStudents(); // Reload the list after deletion
+        this.loadStudents(); 
       },
       (error) => {
         console.error(`Error deleting student with ID ${id}: ${error}`);
-        // Handle error as needed, e.g., show a user-friendly message
       }
     );
   }
 
-  showStudentDetails(id: number, name: string): void {
-    // Make your API call to display student details here
-    this.studentService.getStudentById(id).subscribe(
-      (data) => {
-        console.log('Student details:', data);
-        // Redirect to student details page with ID
-        this.router.navigate(['/students', id]);
-      },
-      (error) => {
-        console.error(`Error fetching details for student with ID ${id}: ${error}`);
-        // Handle error as needed, e.g., show a user-friendly message
-      }
-    );
+  showStudentDetails(student: Student): void {
+    this.router.navigate(['/edit-student', student.studentId]);
   }
 
   addNewStudent(): void {
     this.router.navigate(['/add-student']);
-  } 
-
-  editStudent(id: number): void {
-    // Make your API call to edit student details here
-    this.router.navigate(['/edit-student', id]);
   }
 
   togglePointer(isHovered: boolean): void {
