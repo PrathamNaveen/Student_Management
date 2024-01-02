@@ -1,0 +1,14 @@
+<div class="form-container">
+  <form>
+    <label for="schoolName">School Name:</label>
+    <input type="text" id="schoolName" [(ngModel)]="school.schoolName" name="schoolName" placeholder="Enter school name" required />
+
+    <label for="schoolLocation">School Location:</label>
+    <input type="text" id="schoolLocation" [(ngModel)]="school.schoolLocation" name="schoolLocation" placeholder="Enter school location" required />
+
+    <div class="button-container">
+      <button type="button" (click)="cancel()">Cancel</button>
+      <button type="button" (click)="saveSchool()">Save</button>
+    </div>
+  </form>
+</div>

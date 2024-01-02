@@ -8,7 +8,8 @@ public class Student
     public string Gender { get; set; }
     public string Email { get; set; }
     public string PhoneNumber { get; set; }
-    public int CourseId { get; set; } // Foreign key
+    public int CourseId { get; set; } 
+    public int SchoolId { get; set; } 
 
     // Navigation property
     //public Course? Course { get; set; }

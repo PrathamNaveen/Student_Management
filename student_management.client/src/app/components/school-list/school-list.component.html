@@ -1,0 +1,52 @@
+<!-- school-list.component.html -->
+
+<div class="list-container">
+  <table id="schoolTab" class="center-table">
+    <thead>
+      <tr>
+        <th>School ID</th>
+        <th>School Name</th>
+        <th>School Location</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let school of schools">
+        <td>{{ school.schoolId }}</td>
+        <td>{{ school.schoolName }}</td>
+        <td>{{ school.schoolLocation }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  #schoolTab {
+    margin: auto;
+    width: 90%;
+  }
+
+  .list-container {
+    margin-top: 48px;
+  }
+
+  .center-table table,
+  .center-table th,
+  .center-table td {
+    border: 1px solid #e3e3e3;
+    border-collapse: collapse;
+    text-align: center;
+  }
+
+  .center-table tbody > tr:hover > td {
+    background: #f4f4f4;
+  }
+
+  .center-table thead > tr > th {
+    background: #f4f4f4;
+    border-bottom: 1px solid #e3e3e3 !important;
+  }
+
+  .center-table tbody > tr:nth-child(even) {
+    background: #fbfbfb;
+  }
+</style>

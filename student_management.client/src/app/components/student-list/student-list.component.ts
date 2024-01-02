@@ -57,6 +57,14 @@ export class StudentListComponent implements OnInit {
     this.router.navigate(['/add-student']);
   }
 
+  addNewSchool(): void {
+    this.router.navigate(['/add-school']);
+  }
+
+  listAllSchools(): void {
+    this.router.navigate(['/school-list']);
+  }
+
   togglePointer(isHovered: boolean): void {
     this.isHovered = isHovered;
   }

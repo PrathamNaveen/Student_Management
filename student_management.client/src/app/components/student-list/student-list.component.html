@@ -1,7 +1,11 @@
 <!-- student-list.component.html -->
 
 <div class="list-container">
-  <button class="add-button" (click)="addNewStudent()">Add New Student</button>
+  <div class="button-container">
+    <button class="add-school-button" (click)="addNewSchool()">Add New School</button>
+    <button class="add-student-button" (click)="addNewStudent()">Add New Student</button>
+    <button class="list-schools-button" (click)="listAllSchools()">School List</button>
+  </div>
   <table id="tab1" class="center-table">
     <thead>
       <tr>
@@ -13,6 +17,7 @@
         <th>Email</th>
         <th>Phone Number</th>
         <th>Course ID</th>
+        <th>School ID</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -26,6 +31,7 @@
         <td>{{ student.email }}</td>
         <td>{{ student.phoneNumber }}</td>
         <td>{{ student.courseId }}</td>
+        <td>{{ student.schoolId }}</td>
         <td>
           <button (click)="deleteStudent(student.studentId)" class="delete-button">Delete</button>
           <button (click)="showStudentDetails(student)" class="edit-button">Edit</button>
@@ -62,10 +68,18 @@
     background: #fbfbfb;
   }
 
-  .add-button {
+  .button-container {
     position: absolute;
-    top: 35px;
-    right: 100px;
+    top: 15px;
+    right: 50px;
+    display: flex;
+    gap: 10px;
+    margin: 10px;
+    margin-right: 48px;
+  }
+
+  .add-student-button,
+  .add-school-button {
     padding: 10px;
     background-color: #007bff;
     color: white;
@@ -75,7 +89,31 @@
     transition: background-color 0.3s;
   }
 
-    .add-button:hover {
+    .add-student-button:hover,
+    .add-school-button:hover {
       background-color: #0056b3;
+    }
+
+  .add-school-button {
+    padding: 10px;
+    background-color: #28a745;
+  }
+
+    .add-school-button:hover {
+      background-color: #218838;
+    }
+
+  .list-schools-button {
+    padding: 10px;
+    background-color: #6c757d; 
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+    .list-schools-button:hover {
+      background-color: #495057; 
     }
 </style>

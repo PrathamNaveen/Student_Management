@@ -37,6 +37,14 @@
       </option>
     </select>
 
+    <!-- School field -->
+    <label for="schoolId">School:</label>
+    <select id="schoolId" [(ngModel)]="student.schoolId" name="schoolId">
+      <option *ngFor="let school of schools" [value]="school.schoolId">
+        {{ school.schoolId }} - {{ school.schoolName }}
+      </option>
+    </select>
+
     <div class="button-container">
       <button type="button" (click)="cancel()">Cancel</button>
       <button type="button" (click)="saveStudent()">Save</button>

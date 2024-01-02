@@ -4,8 +4,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { StudentService } from '../../services/student.service';
 import { CourseService } from '../../services/course.service';
+import { SchoolService } from '../../services/school.service';
 import { Student } from '../../models/student.model';
 import { Course } from '../../models/course.model';
+import { School } from '../../models/school.model'; 
 
 @Component({
   selector: 'app-student-form',
@@ -22,18 +24,23 @@ export class StudentFormComponent implements OnInit {
     email: '',
     phoneNumber: '',
     courseId: 0,
+    schoolId: 0
   };
   courses!: any[];
+  schools!: any[];
+
 
   constructor(
     private router: Router,
     private route: ActivatedRoute, 
     private studentService: StudentService,
-    private courseService: CourseService
+    private courseService: CourseService,
+    private schoolService: SchoolService
   ) { }
 
   ngOnInit(): void {
     this.loadCourses();
+    this.loadSchools();
 
     this.route.params.subscribe((params) => {
       const studentId = params['id'];
@@ -64,6 +71,18 @@ export class StudentFormComponent implements OnInit {
       }
     );
   }
+
+  loadSchools(): void {
+    this.schoolService.getSchools().subscribe(
+      (data: any) => {
+        this.schools = data.$values;
+      },
+      (error) => {
+        console.error('Error fetching schools:', error);
+      }
+    );
+  }
+
 
   saveStudent(): void {
     // Edit
