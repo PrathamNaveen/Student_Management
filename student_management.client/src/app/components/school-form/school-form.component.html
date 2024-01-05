@@ -1,14 +1,27 @@
-<div class="form-container">
-  <form>
-    <label for="schoolName">School Name:</label>
-    <input type="text" id="schoolName" [(ngModel)]="school.schoolName" name="schoolName" placeholder="Enter school name" required />
+<!-- school-form.component.html -->
 
-    <label for="schoolLocation">School Location:</label>
-    <input type="text" id="schoolLocation" [(ngModel)]="school.schoolLocation" name="schoolLocation" placeholder="Enter school location" required />
+<div class="flex-container">
+  <div class="error-message" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
 
-    <div class="button-container">
-      <button type="button" (click)="cancel()">Cancel</button>
-      <button type="button" (click)="saveSchool()">Save</button>
-    </div>
-  </form>
+  <div class="form-container">
+    <form (ngSubmit)="saveSchool()">
+      <label for="schoolName">
+        School Name<span class="required-indicator">*</span> <span class="required-text">(required)</span>:
+      </label>
+      <input type="text" id="schoolName" [(ngModel)]="school.schoolName" name="schoolName" placeholder="Enter school name" required />
+
+      <label for="schoolLocation">
+        School Location:
+      </label>
+      <input type="text" id="schoolLocation" [(ngModel)]="school.schoolLocation" name="schoolLocation" placeholder="Enter school location" />
+
+      <div class="button-container">
+        <button type="button" (click)="cancel()">Cancel</button>
+        <button type="submit">Save</button>
+      </div>
+
+    </form>
+  </div>
 </div>

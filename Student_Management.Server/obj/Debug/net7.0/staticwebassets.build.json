@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "Hash": "86DwnNwRgCAs+awV3CSdrOKZJxUfkSD66nU4vzm4kS8=",
+  "Hash": "XHQwd+I0wc1Gx19eRS4A9nKI8rrZRGT45xYsPkWVtkg=",
   "Source": "Student_Management.Server",
   "BasePath": "_content/Student_Management.Server",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Users\\navee\\source\\repos\\Student_Management_Latest\\student_management.client\\student_management.client.esproj",
+      "Identity": "C:\\Users\\navee\\source\\repos\\Student_Management_Final\\student_management.client\\student_management.client.esproj",
       "Version": 2,
       "Source": "student_management.client",
       "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",

@@ -1,11 +1,17 @@
 <!-- student-form.component.html -->
 
 <div class="form-container">
-  <form>
-    <label for="firstName">First Name:</label>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+  <form (ngSubmit)="saveStudent()">
+    <label for="firstName">
+      First Name<span class="required-indicator">*</span> <span class="required-text">(required)</span>:
+    </label>
     <input type="text" id="firstName" [(ngModel)]="student.firstName" name="firstName" placeholder="Enter your first name" required />
 
-    <label for="lastName">Last Name:</label>
+    <label for="lastName">
+      Last Name<span class="required-indicator">*</span> <span class="required-text">(required)</span>:
+    </label>
     <input type="text" id="lastName" [(ngModel)]="student.lastName" name="lastName" placeholder="Enter your last name" required />
 
     <label for="dateOfBirth">Date of Birth:</label>
@@ -23,23 +29,29 @@
       </label>
     </div>
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" [(ngModel)]="student.email" name="email" placeholder="Enter your email" />
+    <label for="email">
+      Email<span class="required-indicator">*</span> <span class="required-text">(required)</span>:
+    </label>
+    <input type="email" id="email" [(ngModel)]="student.email" name="email" placeholder="Enter your email" required />
 
     <label for="phoneNumber">Phone Number:</label>
     <input type="tel" id="phoneNumber" [(ngModel)]="student.phoneNumber" name="phoneNumber" placeholder="Enter your phone number" />
 
     <!-- Course field -->
-    <label for="courseId">Course:</label>
-    <select id="courseId" [(ngModel)]="student.courseId" name="courseId">
+    <label for="courseId">
+      Course<span class="required-indicator">*</span> <span class="required-text">(required)</span>:
+    </label>
+    <select id="courseId" [(ngModel)]="student.courseId" name="courseId" required>
       <option *ngFor="let course of courses" [value]="course.courseId">
         {{ course.courseId }} - {{ course.courseName }}
       </option>
     </select>
 
     <!-- School field -->
-    <label for="schoolId">School:</label>
-    <select id="schoolId" [(ngModel)]="student.schoolId" name="schoolId">
+    <label for="schoolId">
+      School<span class="required-indicator">*</span> <span class="required-text">(required)</span>:
+    </label>
+    <select id="schoolId" [(ngModel)]="student.schoolId" name="schoolId" required>
       <option *ngFor="let school of schools" [value]="school.schoolId">
         {{ school.schoolId }} - {{ school.schoolName }}
       </option>
@@ -47,19 +59,24 @@
 
     <div class="button-container">
       <button type="button" (click)="cancel()">Cancel</button>
-      <button type="button" (click)="saveStudent()">Save</button>
+      <button type="submit">Save</button>
     </div>
-
   </form>
 </div>
 
 <style>
   .form-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 60vh;
     margin-top: 10vh;
+  }
+
+  .error-message {
+    color: red;
+    margin-bottom: 16px;
   }
 
   form {
@@ -89,11 +106,11 @@
   .button-container {
     display: flex;
     justify-content: space-between;
-    margin-top: 48px; 
+    margin-top: 48px;
   }
 
   button {
-    flex: 0 0 48%; 
+    flex: 0 0 48%;
     background-color: #007bff;
     color: white;
     padding: 10px 15px;
@@ -106,9 +123,12 @@
       background-color: #0056b3;
     }
 
-  .button-container button:first-child {
-    background-color: #dc3545; 
+    button:first-child {
+      background-color: #dc3545;
+    }
+
+  .required-indicator {
+    color: red;
+    margin-left: 4px;
   }
 </style>
-
-

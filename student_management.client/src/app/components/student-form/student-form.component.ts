@@ -7,7 +7,7 @@ import { CourseService } from '../../services/course.service';
 import { SchoolService } from '../../services/school.service';
 import { Student } from '../../models/student.model';
 import { Course } from '../../models/course.model';
-import { School } from '../../models/school.model'; 
+import { School } from '../../models/school.model';
 
 @Component({
   selector: 'app-student-form',
@@ -28,11 +28,11 @@ export class StudentFormComponent implements OnInit {
   };
   courses!: any[];
   schools!: any[];
-
+  errorMessage: string = ''; 
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute, 
+    private route: ActivatedRoute,
     private studentService: StudentService,
     private courseService: CourseService,
     private schoolService: SchoolService
@@ -83,8 +83,19 @@ export class StudentFormComponent implements OnInit {
     );
   }
 
-
   saveStudent(): void {
+    // Check for required fields
+    if (!this.validateRequiredFields()) {
+      this.errorMessage = 'Required fields are not filled.';
+      return;
+    }
+
+    // Check for valid email format
+    if (!this.validateEmailFormat()) {
+      this.errorMessage = 'Invalid email format.';
+      return;
+    }
+
     // Edit
     if (this.student.studentId) {
       this.studentService.updateStudent(this.student.studentId, this.student).subscribe(
@@ -92,7 +103,7 @@ export class StudentFormComponent implements OnInit {
           this.router.navigate(['/students']);
         },
         (error) => {
-          console.error('Error updating student:', error);
+          this.errorMessage = 'Error updating student: ' + error;
         }
       );
     }
@@ -103,10 +114,25 @@ export class StudentFormComponent implements OnInit {
           this.router.navigate(['/students']);
         },
         (error) => {
-          console.error('Error saving student:', error);
+          this.errorMessage = 'Error saving student: ' + error;
         }
       );
     }
+  }
+
+  validateRequiredFields(): boolean {
+    return (
+      this.student.firstName.trim() !== '' &&
+      this.student.lastName.trim() !== '' &&
+      this.student.email.trim() !== '' &&
+      this.student.courseId !== 0 &&
+      this.student.schoolId !== 0
+    );
+  }
+
+  validateEmailFormat(): boolean {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    return emailPattern.test(this.student.email.trim());
   }
 
   cancel(): void {

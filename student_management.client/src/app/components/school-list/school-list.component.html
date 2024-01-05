@@ -1,6 +1,10 @@
 <!-- school-list.component.html -->
 
 <div class="list-container">
+  <div class="button-container">
+    <a routerLink="/students" class="back-button">Back</a>
+  </div>
+
   <table id="schoolTab" class="center-table">
     <thead>
       <tr>
@@ -27,7 +31,32 @@
 
   .list-container {
     margin-top: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+
+  .button-container {
+    align-self: flex-end;
+    margin-right: 90px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+  .back-button {
+    padding: 10px;
+    background-color: #495057;
+    color: white;
+    border: none;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+    .back-button:hover {
+      background-color: #343a40;
+    }
 
   .center-table table,
   .center-table th,

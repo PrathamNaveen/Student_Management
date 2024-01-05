@@ -4424,11 +4424,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\navee\\source\\repos\\Student_Management_Latest\\Student_Management.Server\\Student_Management.Server.csproj",
+      "projectUniqueName": "C:\\Users\\navee\\source\\repos\\Student_Management_Final\\Student_Management.Server\\Student_Management.Server.csproj",
       "projectName": "Student_Management.Server",
-      "projectPath": "C:\\Users\\navee\\source\\repos\\Student_Management_Latest\\Student_Management.Server\\Student_Management.Server.csproj",
+      "projectPath": "C:\\Users\\navee\\source\\repos\\Student_Management_Final\\Student_Management.Server\\Student_Management.Server.csproj",
       "packagesPath": "C:\\Users\\navee\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\navee\\source\\repos\\Student_Management_Latest\\Student_Management.Server\\obj\\",
+      "outputPath": "C:\\Users\\navee\\source\\repos\\Student_Management_Final\\Student_Management.Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\navee\\AppData\\Roaming\\NuGet\\NuGet.Config",
